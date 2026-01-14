@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp5rncn24h4e6"]
+
+[ext_resource type="PackedScene" uid="uid://dxwqbrwoaxx6y" path="res://scenes/robot.tscn" id="1_o5qli"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o5qli"]
+normal = Vector2(1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
+radius = 61.03278
+
+[node name="main" type="Node2D"]
+
+[node name="Robot" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(315, 107)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_o5qli")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1152, 648)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1152, 648)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_o5qli")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(697, 356)
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_o5qli")

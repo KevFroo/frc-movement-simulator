@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxwqbrwoaxx6y"]
+
+[ext_resource type="Script" uid="uid://7c1nlyd6qcib" path="res://scripts/robot_controller.gd" id="1_br0rw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gl0xr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br0rw"]
+size = Vector2(80, 80)
+
+[node name="Robot" type="CharacterBody2D"]
+script = ExtResource("1_br0rw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.27596e-12, 0)
+scale = Vector2(80, 80)
+texture = SubResource("PlaceholderTexture2D_gl0xr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_br0rw")
