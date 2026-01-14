@@ -2,9 +2,10 @@ extends CharacterBody2D
 
 @export var speed = 20
 @export var rot_speed = 4.0
+@export var push_strength := 300
 
 const MAX_ACCELATION = 50
-const FRICTION = 4
+const FRICTION = 8
 
 func _physics_process(delta):
 	# handles movements
@@ -33,6 +34,11 @@ func _physics_process(delta):
 	# checks for collision and bounce back node
 	var collision := move_and_collide(velocity)
 	if collision:
-		velocity *= -0.5
+		if collision.get_collider() is RigidBody2D:
+			collision.get_collider().apply_impulse(
+				direction * push_strength
+			)
+		else:
+			velocity = velocity.bounce(collision.get_normal()) * 0.5
 		
 	move_and_slide()

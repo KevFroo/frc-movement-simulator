@@ -1,0 +1,10 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1768355071
+icon.svg::CompressedTexture2D::943711408225173170::1756326282::1768354619::1::::<><><>0<>0<>8e17f27342c6e7828c108a33e8f3822c<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://assets/::1768355258
+simplecircle.png::CompressedTexture2D::2408120141226748392::1768355239::1768355259::1::::<><><>0<>0<>8e626be4b81c0c2e6fcddf04528bfcf1<>res://.godot/imported/simplecircle.png-609851a408401f1340aaed84c02818d9.ctex::
+::res://scenes/::1768355071
+main.tscn::PackedScene::5888660885171251395::1768355067::0::1::::<><><>0<>0<><>::uid://dxwqbrwoaxx6y::::res://scenes/robot.tscn
+robot.tscn::PackedScene::8819995950541208586::1756514165::0::1::::<><><>0<>0<><>::uid://7c1nlyd6qcib::::res://scripts/robot_controller.gd
+::res://scripts/::1768354278
+robot_controller.gd::GDScript::2251774224068369257::1768340906::0::1::::<>CharacterBody2D<><>0<>0<><>::

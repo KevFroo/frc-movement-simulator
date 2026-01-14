@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp5rncn24h4e6"]
+[gd_scene load_steps=9 format=3 uid="uid://cp5rncn24h4e6"]
 
 [ext_resource type="PackedScene" uid="uid://dxwqbrwoaxx6y" path="res://scenes/robot.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://bakrnfisbw2dw" path="res://assets/simplecircle.png" id="2_0wfyh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
 normal = Vector2(0, 1)
@@ -8,35 +9,72 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o5qli"]
 normal = Vector2(1, 0)
 
+[sub_resource type="Gradient" id="Gradient_0wfyh"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.49652237, 0.5569719, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sugp2"]
+gradient = SubResource("Gradient_0wfyh")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5qli"]
 radius = 61.03278
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wfyh"]
+friction = 5.0
+bounce = 1.0
+
 [node name="main" type="Node2D"]
 
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(-576, -324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("WorldBoundaryShape2D_o5qli")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1152, 648)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1152, 648)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_o5qli")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+scale = Vector2(17.993616, 10.125587)
+texture = SubResource("GradientTexture2D_sugp2")
+centered = false
+
 [node name="Robot" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(315, 107)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Robot"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_0wfyh")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_o5qli")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1152, 648)
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_0wfyh")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1152, 648)
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_o5qli")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(697, 356)
+[node name="Obstacle" type="StaticBody2D" parent="."]
+position = Vector2(121, 32)
 input_pickable = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+shape = SubResource("CircleShape2D_o5qli")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_0wfyh")
+
+[node name="MovableObstacle" type="RigidBody2D" parent="."]
+modulate = Color(0, 1, 0.13725491, 1)
+position = Vector2(-112, -86)
+physics_material_override = SubResource("PhysicsMaterial_0wfyh")
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MovableObstacle"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("2_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovableObstacle"]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_o5qli")

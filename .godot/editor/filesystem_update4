@@ -1,0 +1,3 @@
+res://scenes/main.tscn
+res://scripts/robot_controller.gd
+res://scripts/moveableObstacle.gd
